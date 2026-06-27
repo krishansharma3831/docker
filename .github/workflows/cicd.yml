@@ -1,92 +1,92 @@
-name: Django CI CD
+# name: Django CI CD
 
 
-on:
+# on:
 
-  push:
+#   push:
 
-    branches:
-      - main
-
-
-
-jobs:
-
-
- build-test:
-
-
-  runs-on: ubuntu-latest
-
-
-  steps:
-
-
-  - name: Checkout
-
-    uses: actions/checkout@v4
+#     branches:
+#       - main
 
 
 
-  - name: Setup Python
-
-    uses: actions/setup-python@v5
-
-    with:
-
-      python-version: "3.11"
+# jobs:
 
 
-
-  - name: Install packages
-
-    run:
-
-      pip install -r requirements.txt
+#  build-test:
 
 
+#   runs-on: ubuntu-latest
 
-  - name: Django check
 
-    run:
+#   steps:
 
-      python manage.py check
+
+#   - name: Checkout
+
+#     uses: actions/checkout@v4
 
 
 
-  - name: Run tests
+#   - name: Setup Python
 
-    run:
+#     uses: actions/setup-python@v5
 
-      python manage.py test
+#     with:
 
-
-
-  - name: Docker build
-
-    run:
-
-      docker build -t django-app .
+#       python-version: "3.11"
 
 
 
+#   - name: Install packages
 
- deploy:
+#     run:
 
-
-  needs: build-test
-
-
-  runs-on: ubuntu-latest
+#       pip install -r requirements.txt
 
 
 
-  steps:
+#   - name: Django check
+
+#     run:
+
+#       python manage.py check
 
 
-  - name: Deploy Render
+
+#   - name: Run tests
+
+#     run:
+
+#       python manage.py test
 
 
-    run:
 
-      curl ${{ secrets.RENDER_DEPLOY_HOOK }}
+#   - name: Docker build
+
+#     run:
+
+#       docker build -t django-app .
+
+
+
+
+#  deploy:
+
+
+#   needs: build-test
+
+
+#   runs-on: ubuntu-latest
+
+
+
+#   steps:
+
+
+#   - name: Deploy Render
+
+
+#     run:
+
+#       curl ${{ secrets.RENDER_DEPLOY_HOOK }}
