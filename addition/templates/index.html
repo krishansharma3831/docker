@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Django Docker Addition App 🚀</h1>
+
+<form method="POST">
+{% csrf_token %}
+
+<input type="number" name="a" placeholder="Enter A" required>
+<br><br>
+
+<input type="number" name="b" placeholder="Enter B" required>
+<br><br>
+
+<button>Add</button>
+</form>
+
+<h2>
+{% if result %}
+Result = {{ result }}
+{% endif %}
+</h2>
+
+</body>
+</html>
